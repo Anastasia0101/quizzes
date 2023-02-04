@@ -11,8 +11,9 @@
 
     <div v-for="(question, index) in form.questions" :key="index">
       <QuestionForm :question="form.questions[index]"/>
-      <button type="button" @click="addQuestionForm">Add Question</button>
     </div>
+
+    <button type="button" @click="addQuestionForm">Add Question</button>
   
     <button type="submit">Create</button>
   </form>
@@ -40,7 +41,7 @@ const form = reactive({
 
 const onFormSubmit = () => console.log(form);
 
-const addQuestionForm = () => form.questions = form.questions.concat([{}]);
+const addQuestionForm = () => form.questions = form.questions.concat([{options: []}]);
 </script>
 
 <style scoped>

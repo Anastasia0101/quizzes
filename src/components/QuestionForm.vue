@@ -5,8 +5,10 @@
 
     <div v-for="(option, index) in question.options" :key="index" class="options">
       <OptionForm :option="question.options[index]"/>
-      <button type="button" @click="addOptionForm">Add option</button>
     </div>
+    
+    <button type="button" @click="addOptionForm">Add option</button>
+
   </div>
 </template>
 
