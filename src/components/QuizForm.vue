@@ -21,6 +21,7 @@
 
 <script setup>
 import { reactive } from 'vue';
+import router from "@/router";
 import useValidate from '@vuelidate/core';
 import {required} from 'vuelidate/lib/validators';
 import QuestionForm from './QuestionForm.vue';
@@ -63,13 +64,23 @@ const rules = {
 
 const $v = useValidate(rules, form);
 
-const onFormSubmit = () => console.log(form);
+const onFormSubmit = () => {
+  console.log(form);
+
+  fetch('/api/quizzes', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: form.title,
+      description: form.description,
+      questions: form.questions
+    })
+  }).then(res => console.log(res.json()));
+  router.push('quizzes');
+}
 
 const addQuestionForm = () => {
   form.questions = form.questions.concat([{options: [{}]}]);
-  console.log(form.questions)
 }
-
 </script>
 
 <style scoped>

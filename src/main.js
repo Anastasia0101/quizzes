@@ -2,8 +2,13 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import Vuelidate from 'vuelidate';
+import { makeServer } from "./server";
 
 import './assets/main.css';
+
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 
 const app = createApp(App);
 
