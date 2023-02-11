@@ -1,5 +1,4 @@
 <template>
-  <p>Quiz form</p>
   <form class="form" @submit.prevent="onFormSubmit()">
     <label for="title">Quiz Title</label>
     <input type="text" v-model.trim="form.title" id="title"/>
@@ -102,7 +101,6 @@ const isDeleteBtnDisable = computed(() => {
 .form {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin: 0 auto;
+  padding: 20px;;
 }
 </style>

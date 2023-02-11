@@ -1,11 +1,26 @@
 <template>
-  <router-view></router-view>
+  <div class="page">
+    <header class="page__header">
+      <Header />
+    </header>
+    <main class="page__main">
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script setup>
-import QuizForm from './components/QuizForm.vue';
+import Header from './components/Header.vue';
 </script>
 
-<style>
+<style scoped>
+.page {
+  width: 100%;
+  height: 100vh;
+}
 
+.page__header {
+  height: 10%;
+  margin-top: 20px;
+}
 </style> 
