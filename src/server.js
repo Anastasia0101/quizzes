@@ -49,6 +49,12 @@ export function makeServer({ environment = "development" } = {}) {
 
         return schema.db.quizzes.insert(quiz);
       });
+
+      this.delete("/quizzes/:id", (schema, request) => {
+        let id = request.params.id;
+
+        return schema.db.quizzes.find(id).delete();
+      });
     },
   })
 

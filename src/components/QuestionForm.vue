@@ -5,19 +5,28 @@
 
     <div v-for="(option, index) in question.options" :key="index" class="options">
       <OptionForm :option="option"/>
+      <button type="button" @click="deleteOption(index)" :disabled="isDeleteBtnDisable">Delete option</button>
     </div>
 
-    <button type="button" @click="addOptionForm" :disabled="isOptionsInvalid">Add option</button>
+    <button type="button" @click="addOptionForm">Add option</button>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import OptionForm from './OptionForm.vue';
 
-const { question, isOptionsInvalid } = defineProps(['question', 'isOptionsInvalid']);
+const { question } = defineProps(['question']);
 
 const addOptionForm = () => question.options = question.options.concat([{}]);
+
+const deleteOption = (optionIndex) => {
+  question.options = question.options.filter((item, index) => index != optionIndex);
+}
+
+const isDeleteBtnDisable = computed(() => {
+  return question.options.length == 1 ? true : false;
+});
 </script>
 
 <style>

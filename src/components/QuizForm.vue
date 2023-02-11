@@ -10,17 +10,26 @@
     <p>Questions</p>
 
     <div v-for="(question, index) in form.questions" :key="index">
-      <QuestionForm :question="question" :isOptionsInvalid="$v.questions.$invalid"/>
+      <QuestionForm v-model:question="form.questions[index]"/>
+      <button 
+        type="button" 
+        @click="deleteQuestion(index)" 
+        :disabled="isDeleteBtnDisable"
+      >Delete question</button>
     </div>
 
-    <button type="button" @click="addQuestionForm" :disabled="$v.questions.$invalid">Add Question</button>
+    <button 
+      type="button" 
+      @click="addQuestionForm" 
+      :disabled="$v.questions.$invalid"
+    >Add Question</button>
 
     <button type="submit" :disabled="$v.$invalid">Create</button>
   </form>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import router from "@/router";
 import useValidate from '@vuelidate/core';
 import {required} from 'vuelidate/lib/validators';
@@ -65,8 +74,6 @@ const rules = {
 const $v = useValidate(rules, form);
 
 const onFormSubmit = () => {
-  console.log(form);
-
   fetch('/api/quizzes', {
     method: 'POST',
     body: JSON.stringify({
@@ -74,13 +81,21 @@ const onFormSubmit = () => {
       description: form.description,
       questions: form.questions
     })
-  }).then(res => console.log(res.json()));
+  });
   router.push('quizzes');
 }
 
 const addQuestionForm = () => {
   form.questions = form.questions.concat([{options: [{}]}]);
 }
+
+const deleteQuestion = (questionIndex) => {
+  form.questions = form.questions.filter((item, index) => index != questionIndex);
+}
+
+const isDeleteBtnDisable = computed(() => {
+  return form.questions.length == 1 ? true : false;
+});
 </script>
 
 <style scoped>
