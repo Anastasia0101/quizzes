@@ -4,7 +4,7 @@ import router from './router';
 import Vuelidate from 'vuelidate';
 import { makeServer } from "./server";
 
-import './assets/main.css';
+import './assets/styles/__main.sass';
 
 if (process.env.NODE_ENV === "development") {
   makeServer();

@@ -23,4 +23,10 @@ import Header from './components/Header.vue';
   height: 10%;
   margin-top: 20px;
 }
+
+.page__main {
+  width: 70%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 </style> 
