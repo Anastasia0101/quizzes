@@ -1,12 +1,22 @@
 <template>
   <form class="form" @submit.prevent="onFormSubmit()">
-    <label for="title">Quiz Title</label>
-    <input type="text" v-model.trim="form.title" id="title"/>
-
-    <label for="Description">Quiz Description</label>
-    <input type="text" id="description" v-model.trim="form.description"/>
-
-    <p>Questions</p>
+    <div class="form__field field">
+      <label for="title" class="field__label">Title</label>
+      <input type="text" v-model.trim="form.title" id="title" class="field__input"/>
+    </div>
+    
+    <div class="form__field field">
+      <label for="Description" class="field__label">Description</label>
+      <textarea 
+        id="description" 
+        v-model.trim="form.description" 
+        class="field__input"
+        rows="4" 
+        cols="50"
+      ></textarea>
+    </div>
+  
+    <p class="form__text">Questions</p>
 
     <div v-for="(question, index) in form.questions" :key="index">
       <QuestionForm v-model:question="form.questions[index]"/>
@@ -97,10 +107,21 @@ const isDeleteBtnDisable = computed(() => {
 });
 </script>
 
-<style scoped>
-.form {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;;
-}
+<style lang="sass" scoped>
+@import "../assets/styles/__main.sass"
+.form
+  display: flex
+  flex-direction: column
+  padding: 20px
+
+.form__field
+  @include form-field-horizotal
+  width: 80%
+
+.field__input 
+  @extend .form-input
+
+.form__text
+  text-align: center
+
 </style>
