@@ -41,7 +41,7 @@
 import { computed, reactive } from 'vue';
 import router from "@/router";
 import useValidate from '@vuelidate/core';
-import {required} from 'vuelidate/lib/validators';
+import { required } from '@vuelidate/validators';
 import QuestionForm from './QuestionForm.vue';
 
 const form = reactive({
