@@ -1,8 +1,10 @@
 <template>
+  <h2 class="title">New Quez</h2>
   <form class="form" @submit.prevent="onFormSubmit()">
     <div class="form__field field">
       <label for="title" class="field__label">Title</label>
-      <input type="text" v-model.trim="form.title" id="title" class="field__input"/>
+      <!-- <input type="text" v-model.trim="form.title" id="title" class="field__input"/> -->
+      <TextInput />
     </div>
     
     <div class="form__field field">
@@ -18,7 +20,7 @@
   
     <p class="form__text">Questions</p>
 
-    <div v-for="(question, index) in form.questions" :key="index">
+    <div v-for="(question, index) in form.questions" :key="index" class="form__questions">
       <QuestionForm v-model:question="form.questions[index]"/>
       <button 
         type="button" 
@@ -43,6 +45,7 @@ import router from "@/router";
 import useValidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 import QuestionForm from './QuestionForm.vue';
+import TextInput from './TextInput/TextInput.vue';
 
 const form = reactive({
   title: '',
@@ -108,11 +111,16 @@ const isDeleteBtnDisable = computed(() => {
 </script>
 
 <style lang="sass" scoped>
-@import "../assets/styles/__main.sass"
+@import "../styles/__main.sass"
+
+.title
+  text-align: center
+
 .form
   display: flex
   flex-direction: column
   padding: 20px
+  background-color: #FFFFFF
 
 .form__field
   @include form-field-horizotal
@@ -124,4 +132,9 @@ const isDeleteBtnDisable = computed(() => {
 .form__text
   text-align: center
 
+.form__questions
+  margin: 0 auto
+  width: 80%
+  max-width: 900px
 </style>
+

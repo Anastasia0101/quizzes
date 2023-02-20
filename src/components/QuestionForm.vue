@@ -41,11 +41,12 @@ const isOptionSingle = computed(() => question.options.length == 1 ?? false);
 </script>
 
 <style lang="sass" scoped>
-@import "../assets/styles/__main.sass"
+@import "../styles/__main.sass"
 
 .question
   border: 1px solid #EEEEEE
   box-shadow: 1px 1px 1px #000000
+
 .question__input
   @include form-field-horizotal
 

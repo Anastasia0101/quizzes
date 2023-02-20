@@ -37,7 +37,7 @@ const onClickDeleteBtn = () => emit('clickedDeleteBtn');
 </script>
 
 <style lang="sass" scoped>
-@import "../assets/styles/__main.sass"
+@import "../styles/__main.sass"
 
 .option
   @include form-field-horizotal
@@ -68,9 +68,9 @@ const onClickDeleteBtn = () => emit('clickedDeleteBtn');
 .select
   position: relative
   display: flex
-  width: 75px
-  height: 3em
-  line-height: 1.5em
+  width: 80px
+  height: 2em
+  // line-height:/ 1.5em
   overflow: hidden
   border-radius: 3px
 

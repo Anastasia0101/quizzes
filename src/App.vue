@@ -11,17 +11,18 @@
 
 <script setup>
 import Header from './components/Header.vue';
+import Input from './components/UI/Input/Input.vue';
 </script>
 
 <style scoped>
 .page {
   width: 100%;
   height: 100vh;
+  background-color: #ededed;
 }
 
 .page__header {
   height: 10%;
-  margin-top: 20px;
 }
 
 .page__main {
