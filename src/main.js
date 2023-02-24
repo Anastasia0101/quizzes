@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import Vuelidate from 'vuelidate';
 import { makeServer } from "./server";
+import * as VeeValidate from 'vee-validate';
 
 import './styles/__main.sass';
 
@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === "development") {
 
 const app = createApp(App);
 
-app.use(router, Vuelidate);
+app
+  .use(router)
+  .use(VeeValidate);
 
 app.mount('#app');
