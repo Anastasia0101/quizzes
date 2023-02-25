@@ -2,12 +2,17 @@
   <form @submit.prevent="onSubmit" class="form">
     <div class="form__field field">
       <label for="title" class="field__label">Title</label>
-      <TextInput id="title" name="title" v-model.trim="title" />
+      <TextInput id="title" name="title" />
     </div>
     
     <div class="form__field field">
       <label for="description" class="field__label">Description</label>
-      <FormTextArea id="description" name="description" v-model.trim="description" />
+      <TextInput 
+        id="description" 
+        name="description" 
+        :rows="4" 
+        :cols="50"
+      />
     </div>
   
     <PageTitle :level="2" :title="'Questions'" />
@@ -30,7 +35,6 @@
 
 <script setup>
 import TextInput from '../TextInput/TextInput.vue';
-import FormTextArea from '../FormTextArea/FormTextArea.vue';
 import IconButton from '../IconButton/IconButton.vue';
 import PrimaryButton from '../PrimaryButton/PrimaryButton.vue';
 import DeleteIcon from '../../assets/buttons-svg/trash-box.svg';
@@ -41,15 +45,20 @@ import { reactive } from 'vue';
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
 
-const form = reactive(useForm());
+const schema = yup.object().shape({
+  title: yup.string().required(),
+  description: yup.string().required() 
+});
 
-const { value: title } = useField('title', yup.string().required());
-const { value: description  } = useField('description', yup.string().required());
+const form = reactive(useForm({
+  validationSchema: schema
+}));
 
 const onSubmit = () => {
   console.log(form.meta)
   console.log(form.values)
 };
+
 
 // const onFormSubmit = () => {
 //   fetch('/api/quizzes', {
