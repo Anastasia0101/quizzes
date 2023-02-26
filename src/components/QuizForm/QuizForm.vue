@@ -17,17 +17,26 @@
   
     <PageTitle :level="2" :title="'Questions'" />
 
-    <div class="form__questions">
-      <icon-button>
-        <DeleteIcon />
-      </icon-button>
-    </div>
+    <ul v-if="questionsFields" name="questions">
+      <li v-for="(field, index) in questionsFields" :key="index">
+        <QuestionFields 
+          :name="`questions[${index}]`"
+          :questionIndex="index"
+        />
+        <div class="form__questions">
+        <icon-button @click="deleteQuestion(index)">
+          <DeleteIcon />
+        </icon-button>
+      </div>
+      </li>
+    </ul>
 
     <button 
       type="button" 
+      @click="addQuestionForm"
     >Add Question</button>
-  
-    <primary-button :button-type="'submit'" :disabled="!form.meta.valid">
+
+    <primary-button :button-type="'submit'" :disabled="!form.meta.valid" @click="onSubmit">
       Create
     </primary-button>
   </form>
@@ -39,20 +48,49 @@ import IconButton from '../IconButton/IconButton.vue';
 import PrimaryButton from '../PrimaryButton/PrimaryButton.vue';
 import DeleteIcon from '../../assets/buttons-svg/trash-box.svg';
 import PageTitle from '../PageTitle/PageTitle.vue';
+import QuestionFields from '../QuestionFields/QuestionFields.vue';
 
 import { reactive } from 'vue';
 
-import { useForm, useField } from 'vee-validate';
+import { useForm, useFieldArray } from 'vee-validate';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
   title: yup.string().required(),
-  description: yup.string().required() 
+  description: yup.string().required(),
+  questions: yup.array().of(
+    yup.object().shape({
+      text: yup.string().required(),
+      options: yup.array().of(
+        yup.object().shape({
+          text: yup.string().required(),
+          isCorrect: yup.string().required()
+        })
+      ).required()
+    })
+  )
 });
 
 const form = reactive(useForm({
-  validationSchema: schema
+  validationSchema: schema,
+  initialValues: {
+    title: '',
+    description: '',
+    questions: [
+      {
+        text: '',
+        options: [
+          {
+            text: '',
+            isCorrect: ''
+          }
+        ]
+      }
+    ]
+  }
 }));
+
+const { fields: questionsFields, push, remove } = useFieldArray('questions');
 
 const onSubmit = () => {
   console.log(form.meta)
@@ -72,13 +110,9 @@ const onSubmit = () => {
 //   router.push('quizzes');
 // }
 
-// const addQuestionForm = () => {
-//   form.questions = form.questions.concat([{options: [{}]}]);
-// }
+const addQuestionForm = () => push({ text: '', options: [] });
 
-// const deleteQuestion = (questionIndex) => {
-//   form.questions = form.questions.filter((item, index) => index != questionIndex);
-// }
+const deleteQuestion = (questionIndex) => remove(questionIndex);
 
 // const isDeleteBtnDisable = computed(() => {
 //   return form.questions.length == 1 ? true : false;

@@ -19,6 +19,7 @@ import Input from './components/UI/Input/Input.vue';
   width: 100%;
   height: 100vh;
   background-color: #ededed;
+  color: black;
 }
 
 .page__header {
