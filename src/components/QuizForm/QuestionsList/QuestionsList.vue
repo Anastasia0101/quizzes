@@ -25,7 +25,7 @@ const props = defineProps({
 
 const { fields, push, remove } = useFieldArray(props.name);
 
-const addQuestionForm = () => push({ text: '', options: []  });
+const addQuestionForm = () => push({ text: '', options: [{ text: '', isCorrect: ''}] });
 
 const deleteQuestion = (index) => remove(index);
 </script>

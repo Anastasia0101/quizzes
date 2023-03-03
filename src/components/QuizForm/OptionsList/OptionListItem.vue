@@ -1,6 +1,6 @@
 <template>
   <OptionFields 
-    :name="`${name}.options[${fieldKey}]`"
+    :name="name"
   />
   <icon-button @click="onClickDeleteBtn()">
     <DeleteIcon />
@@ -15,10 +15,6 @@ import OptionFields from './OptionFields.vue';
 defineProps({
   name: {
     type: String,
-    required: true
-  },
-  fieldKey: {
-    type: Number,
     required: true
   }
 });

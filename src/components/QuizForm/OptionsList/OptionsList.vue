@@ -2,11 +2,9 @@
   <ul v-if="optionsFields" :name="'options'">
     <li v-for="field in optionsFields" :key="field.key">
       <OptionListItem 
-        :name="name" 
-        :fieldKey="field.key" 
+        :name="`${name}[${field.key}]`" 
         @clickDeleteBtn="deleteOption(field.key)" 
       />
-      {{ field.key }}
     </li>
   </ul>
   <button 
@@ -26,7 +24,7 @@ const props = defineProps({
   }
 });
 
-const { fields: optionsFields, push, remove } = useFieldArray(`${props.name}.options`);
+const { fields: optionsFields, push, remove } = useFieldArray(`${props.name}`);
 
 const addOptionFields = () => push({ text: '', isCorrect: '' });
 const deleteOption = (index) => remove(index);

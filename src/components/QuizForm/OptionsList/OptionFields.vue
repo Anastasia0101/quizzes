@@ -1,6 +1,6 @@
 <template>
-  <TextInput :id="nameText" :name="nameText" />
-  <TextInput :id="nameIsCorrect" :name="nameIsCorrect" />
+  <TextInput :id="nameForText" :name="nameForText" />
+  <TextInput :id="nameForIsCorrect" :name="nameForIsCorrect" />
 </template>
 
 <script setup>
@@ -13,8 +13,8 @@ const props = defineProps({
   }
 });
 
-const nameText = `${props.name}.text`;
-const nameIsCorrect = `${props.name}.isCorrect`;
+const nameForText = `${props.name}.text`;
+const nameForIsCorrect = `${props.name}.isCorrect`;
 </script>
 
 <style scoped>
