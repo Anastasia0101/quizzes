@@ -13,7 +13,7 @@
 <script setup>
 import { toRef } from 'vue';
 import { useField } from 'vee-validate';
-import Input from '../UI/Input/Input.vue';
+import Input from './UI/Input.vue';
 
 const props = defineProps({
   id: {
@@ -40,5 +40,12 @@ const { value: inputValue, handleChange } = useField(name, undefined);
 </script>
 
 <style lang="sass" scoped>
-@import ./textInput.sass
+.input
+  width: 60%
+  border: 1px solid rgb(222, 222, 222)
+  border-radius: 3px
+  padding: 0.6em
+
+  &:focus
+    outline: 2px solid rgba(162, 47, 244, 1)
 </style>

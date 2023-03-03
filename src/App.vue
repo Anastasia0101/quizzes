@@ -1,8 +1,6 @@
 <template>
   <div class="page">
-    <header class="page__header">
-      <Header />
-    </header>
+    <Header />
     <main class="page__main">
       <router-view></router-view>
     </main>
@@ -11,7 +9,7 @@
 
 <script setup>
 import Header from './components/Header.vue';
-import Input from './components/UI/Input/Input.vue';
+import Input from './components/UI/Input.vue';
 </script>
 
 <style scoped>

@@ -5,5 +5,5 @@
 
 <script setup>
 import QuizForm from '../components/QuizForm/QuizForm.vue';
-import PageTitle from '../components/PageTitle/PageTitle.vue';
+import PageTitle from '../components/PageTitle.vue';
 </script>

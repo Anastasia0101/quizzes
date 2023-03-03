@@ -12,7 +12,7 @@ defineProps({
     type: Number,
     required: false
   }
-})
+});
 
 const Text = (props, context) => {
   const tag = props.level ? 'h' + props.level : 'p';
@@ -21,5 +21,7 @@ const Text = (props, context) => {
 </script>
 
 <style lang="sass" scoped>
-@import ./text.sass
+.text
+  text-align: left
+  margin: 0
 </style>

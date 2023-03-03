@@ -49,5 +49,18 @@ const Input = (props, context) => {
 </script>
 
 <style lang="sass" scoped>
-@import ./input.sass
+.input
+  border: none
+  background-image: none
+  background-color: transparent
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  overflow: auto
+  outline: none
+  resize: none
+
+  &:focus
+    outline: none
+  
 </style>

@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import TextInput from '../TextInput/TextInput.vue';
+import TextInput from '../../TextInput.vue';
 
 const props = defineProps({
   name: {

@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import BaseButton from '../UI/BaseButton/BaseButton.vue';
+import BaseButton from './UI/BaseButton.vue';
 
 defineProps({
   buttonType: String
@@ -14,5 +14,9 @@ defineProps({
 </script>
 
 <style lang="sass" scoped>
-@import ./primaryButton.sass
+.button
+  padding: 5px 10px
+  background-color: #FFFFFF
+  border-radius: 5px
+
 </style>

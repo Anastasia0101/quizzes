@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit" class="form">
+  <form @submit.prevent="onFormSubmit" class="form">
     <div class="form__field field">
       <label for="title" class="field__label">Title</label>
       <TextInput id="title" name="title" />
@@ -17,42 +17,25 @@
   
     <PageTitle :level="2" :title="'Questions'" />
 
-    <ul v-if="questionsFields" name="questions">
-      <li v-for="(field, index) in questionsFields" :key="index">
-        <QuestionFields 
-          :name="`questions[${index}]`"
-          :questionIndex="index"
-        />
-        <div class="form__questions">
-        <icon-button @click="deleteQuestion(index)">
-          <DeleteIcon />
-        </icon-button>
-      </div>
-      </li>
-    </ul>
+    <QuestionsList name="questions" />
 
-    <button 
-      type="button" 
-      @click="addQuestionForm"
-    >Add Question</button>
-
-    <primary-button :button-type="'submit'" :disabled="!form.meta.valid" @click="onSubmit">
+    <primary-button :button-type="'submit'" :disabled="!form.meta.valid">
       Create
     </primary-button>
   </form>
 </template>
 
 <script setup>
-import TextInput from '../TextInput/TextInput.vue';
-import IconButton from '../IconButton/IconButton.vue';
-import PrimaryButton from '../PrimaryButton/PrimaryButton.vue';
-import DeleteIcon from '../../assets/buttons-svg/trash-box.svg';
-import PageTitle from '../PageTitle/PageTitle.vue';
-import QuestionFields from '../QuestionFields/QuestionFields.vue';
+import router from "@/router";
+
+import TextInput from '../TextInput.vue';
+import PrimaryButton from '../PrimaryButton.vue';
+import PageTitle from '../PageTitle.vue';
+import QuestionsList from './QuestionsList/QuestionsList.vue';
 
 import { reactive } from 'vue';
 
-import { useForm, useFieldArray } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -90,37 +73,31 @@ const form = reactive(useForm({
   }
 }));
 
-const { fields: questionsFields, push, remove } = useFieldArray('questions');
-
-const onSubmit = () => {
-  console.log(form.meta)
-  console.log(form.values)
-};
-
-
-// const onFormSubmit = () => {
-//   fetch('/api/quizzes', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       title: form.title,
-//       description: form.description,
-//       questions: form.questions
-//     })
-//   });
-//   router.push('quizzes');
-// }
-
-const addQuestionForm = () => push({ text: '', options: [] });
-
-const deleteQuestion = (questionIndex) => remove(questionIndex);
-
-// const isDeleteBtnDisable = computed(() => {
-//   return form.questions.length == 1 ? true : false;
-// });
+const onFormSubmit = () => {
+  fetch('/api/quizzes', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: form.values.title,
+      description: form.values.description,
+      questions: form.values.questions
+    })
+   });
+  router.push('quizzes');
+}
 </script>
 
 <style lang="sass" scoped>
-@import ./quizForm.sass
+.form
+  display: flex
+  flex-direction: column
+  padding: 20px
+  background-color: #FFFFFF
 
+.form__field
+  display: flex
+  justify-content: space-between
+  margin: 1em auto
+  max-width: 500px
+  width: 80%
 </style>
 

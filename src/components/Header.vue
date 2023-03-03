@@ -1,8 +1,10 @@
 <template>
-  <nav class="nav">
-    <router-link to="quizzes" class="nav__link">All Quizzes</router-link>
-    <router-link to="add-quiz" class="nav__link">New Quizzes</router-link>
-  </nav>
+  <header>
+    <nav class="nav">
+      <router-link to="quizzes" class="nav__link">All Quizzes</router-link>
+      <router-link to="add-quiz" class="nav__link">New Quizzes</router-link>
+    </nav>
+  </header> 
 </template>
 
 <script>

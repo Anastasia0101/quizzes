@@ -15,6 +15,12 @@ const buttonType = () => type ?? 'button';
 </script>
 
 <style lang="sass" scoped>
-@import ./baseButton.sass
-
+.button
+  background: none
+  color: inherit
+  border: none
+  padding: 0
+  font: inherit
+  cursor: pointer
+  outline: inherit
 </style>

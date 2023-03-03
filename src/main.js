@@ -12,8 +12,6 @@ if (process.env.NODE_ENV === "development") {
 
 const app = createApp(App);
 
-app
-  .use(router)
-  .use(VeeValidate);
+app.use(router, VeeValidate);
 
 app.mount('#app');

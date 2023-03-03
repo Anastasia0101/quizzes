@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import Text from '../UI/Text/Text.vue';
+import Text from './UI/Text.vue';
 
 defineProps({
   title: {
@@ -18,5 +18,7 @@ defineProps({
 </script>
 
 <style lang="sass" scoped>
-@import ./pageTitle.sass
+.title
+  text-align: center
+  margin: 1em 0
 </style>

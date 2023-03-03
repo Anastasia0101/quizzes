@@ -1,15 +1,14 @@
 <template>
-  <label for="`${name}.text`"></label>
-  <TextInput :id="`${name}.text`" :name="`${name}.text`" />
-
   <ul v-if="optionsFields" :name="'options'">
-    <li v-for="(field, index) in optionsFields" :key="index">
-      <OptionFields 
-        :name="`${name}.options[${index}]`"
+    <li v-for="field in optionsFields" :key="field.key">
+      <OptionListItem 
+        :name="name" 
+        :fieldKey="field.key" 
+        @clickDeleteBtn="deleteOption(field.key)" 
       />
+      {{ field.key }}
     </li>
   </ul>
-
   <button 
     type="button" 
     @click="addOptionFields"
@@ -18,16 +17,11 @@
 
 <script setup>
 import { useFieldArray } from 'vee-validate';
-import TextInput from '../TextInput/TextInput.vue';
-import OptionFields from '../OptionFields/OptionFields.vue';
+import OptionListItem from './OptionListItem.vue';
 
 const props = defineProps({
   name: {
     type: String,
-    required: true
-  },
-  questionIndex: {
-    type: Number,
     required: true
   }
 });
@@ -35,8 +29,9 @@ const props = defineProps({
 const { fields: optionsFields, push, remove } = useFieldArray(`${props.name}.options`);
 
 const addOptionFields = () => push({ text: '', isCorrect: '' });
+const deleteOption = (index) => remove(index);
 </script>
 
-<style lang="sass" scoped>
+<style>
 
 </style>
