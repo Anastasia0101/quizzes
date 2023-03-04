@@ -9,7 +9,6 @@
 
 <script setup>
 import Header from './components/Header.vue';
-import Input from './components/UI/Input.vue';
 </script>
 
 <style scoped>

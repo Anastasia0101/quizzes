@@ -30,7 +30,6 @@ import { reactive } from 'vue';
 import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 
-import TextInput from '../TextInput.vue';
 import PrimaryButton from '../PrimaryButton.vue';
 import PageTitle from '../PageTitle.vue';
 import QuizFormInputField from "./QuizFormInputField.vue";

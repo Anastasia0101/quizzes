@@ -17,7 +17,7 @@ defineProps({
   },
   labelText: {
     type: String,
-    required: true
+    required: false
   },
   rows: {
     type: Number,
