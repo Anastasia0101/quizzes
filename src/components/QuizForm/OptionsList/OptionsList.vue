@@ -30,6 +30,4 @@ const addOptionFields = () => push({ text: '', isCorrect: '' });
 const deleteOption = (index) => remove(index);
 </script>
 
-<style>
-
-</style>
+<style></style>

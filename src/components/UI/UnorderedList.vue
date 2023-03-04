@@ -6,9 +6,7 @@
   </ul>
 </template>
 
-<script setup>
-
-</script>
+<script></script>
 
 <style lang="sass" scoped>
 </style>

@@ -1,17 +1,16 @@
 <template>
   <form @submit.prevent="onFormSubmit" class="form">
     <div class="form__field field">
-      <label for="title" class="field__label">Title</label>
-      <TextInput id="title" name="title" />
+      <QuizFormInputField id="title" name="title" labelText="Title" />
     </div>
     
     <div class="form__field field">
-      <label for="description" class="field__label">Description</label>
-      <TextInput 
+      <QuizFormInputField 
         id="description" 
         name="description" 
         :rows="4" 
         :cols="50"
+        labelText="Description"
       />
     </div>
   
@@ -27,16 +26,15 @@
 
 <script setup>
 import router from "@/router";
+import { reactive } from 'vue';
+import { useForm } from 'vee-validate';
+import * as yup from 'yup';
 
 import TextInput from '../TextInput.vue';
 import PrimaryButton from '../PrimaryButton.vue';
 import PageTitle from '../PageTitle.vue';
+import QuizFormInputField from "./QuizFormInputField.vue";
 import QuestionsList from './QuestionsList/QuestionsList.vue';
-
-import { reactive } from 'vue';
-
-import { useForm } from 'vee-validate';
-import * as yup from 'yup';
 
 const schema = yup.object().shape({
   title: yup.string().required(),
@@ -100,4 +98,3 @@ const onFormSubmit = () => {
   max-width: 500px
   width: 80%
 </style>
-

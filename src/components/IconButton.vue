@@ -13,5 +13,4 @@ import BaseButton from './UI/BaseButton.vue';
   fill: #FFFFFF
   &*:hover::active
     cursor: pointer
-
 </style>

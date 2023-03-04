@@ -1,6 +1,5 @@
 <template>
-  <label for="`${name}.text`"></label>
-  <TextInput :id="`${name}.text`" :name="`${name}.text`" />
+  <QuizFormInputField  :id="`${name}.text`" :name="`${name}.text`"/>
 
   <OptionsList :name="`${name}.options`" />
 
@@ -12,8 +11,8 @@
 <script setup>
 import DeleteIcon from '../../../assets/icons-svg/trash-box.svg';
 import IconButton from '../../IconButton.vue';
-import TextInput from '../../TextInput.vue';
 import OptionsList from '../OptionsList/OptionsList.vue';
+import QuizFormInputField from '../QuizFormInputField.vue';
 
 const props = defineProps({
   name: {
@@ -27,6 +26,4 @@ const emit = defineEmits(['deleteBtnClicked']);
 const onDeleteBtnClick = () => emit('deleteBtnClicked');
 </script>
 
-<style>
-
-</style>
+<style></style>

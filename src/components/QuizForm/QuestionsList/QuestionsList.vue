@@ -30,6 +30,4 @@ const addQuestionForm = () => push({ text: '', options: [{ text: '', isCorrect: 
 const deleteQuestion = (index) => remove(index);
 </script>
 
-<style>
-
-</style>
+<style></style>

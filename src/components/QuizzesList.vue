@@ -1,19 +1,8 @@
 <template>
   <ul v-if="quizzes">
-    <li v-for="(quiz, index) in quizzes" :key="index">
+    <li v-for="quiz in quizzes" :key="quiz.id">
       <p>{{ quiz.title }}</p>
       <p>{{ quiz.description }}</p>
-      <ul>
-        <li v-for="(question, questionid) in quiz.questions" :key="questionid">
-          {{ question.text }}
-          <ul>
-            <li v-for="(option, optionInd) in question.options" :key="optionInd">
-              {{ option.text }}
-              {{ option.isCorrect }}
-            </li>
-          </ul>
-        </li>
-      </ul>
     </li>
   </ul>
   <router-link to="add-quiz">Add quiz</router-link>
@@ -31,6 +20,4 @@ fetch("/api/quizzes")
   });
 </script>
 
-<style>
-
-</style>
+<style></style>

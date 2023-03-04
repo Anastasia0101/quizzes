@@ -16,6 +16,7 @@ export function makeServer({ environment = "development" } = {}) {
             description: 'Add numbers',
             questions: [
               {
+                id: '1',
                 text: '2+3',
                 options: [
                   { text: '2', isCorrect: false },
@@ -57,6 +58,5 @@ export function makeServer({ environment = "development" } = {}) {
       });
     },
   })
-
   return server;
 }

@@ -17,6 +17,4 @@ const nameForText = `${props.name}.text`;
 const nameForIsCorrect = `${props.name}.isCorrect`;
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -24,6 +24,4 @@ const emit = defineEmits(['clickDeleteBtn']);
 const onClickDeleteBtn = () => emit('clickDeleteBtn'); 
 </script>
 
-<style>
-
-</style>
+<style></style>

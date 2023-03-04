@@ -9,8 +9,7 @@ import BaseButton from './UI/BaseButton.vue';
 
 defineProps({
   buttonType: String
-})
-
+});
 </script>
 
 <style lang="sass" scoped>
@@ -18,5 +17,4 @@ defineProps({
   padding: 5px 10px
   background-color: #FFFFFF
   border-radius: 5px
-
 </style>

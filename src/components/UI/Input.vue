@@ -62,5 +62,4 @@ const Input = (props, context) => {
 
   &:focus
     outline: none
-  
 </style>
